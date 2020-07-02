@@ -9,7 +9,7 @@ class direccion (models.Model):
     comuna = models.CharField(max_length=50)
     ciudad = models.CharField(max_length=50)
     def __str__(self):
-        return ("ID: {} / {} {} / {}".format(self.id, self.Calle, self.Numero, self.Ciudad))
+        return ("ID: {} / {} {} / {}".format(self.id, self.calle, self.numero, self.ciudad))
 
 class cliente (models.Model):
     RUT = models.AutoField(primary_key=True)
