@@ -13,18 +13,18 @@ class direccion (models.Model):
 
 class cliente (models.Model):
     RUT = models.AutoField(primary_key=True)
-    direccion = models.ForeignKey('direccion', on delete = models.CASCADE)
+    direccion = models.ForeignKey('direccion', on_delete= models.CASCADE)
     nombre = models.CharField(max_length=50)
-    telefono = models.CharField(max_lengtj=11)
+    telefono = models.CharField(max_length=11)
     def __str__(self):
         return ("RUT: {} / {} / telefono {}". format(self.RUT, self.nombre, self.telefono))
 
-class proovedor (models.Model):
+class provedor (models.Model):
     RUT = models.AutoField(primary_key=True)
-    direccion = models.ForeignKey('direccion', on delete= models.CASCADE)
+    direccion = models.ForeignKey('direccion', on_delete= models.CASCADE)
     telefono = models.CharField(max_length=11)
     nombre = models.CharField(max_length=50)
-    web = models.CharField(max_length=2.083)
+    web = models.CharField(max_length=500)
     def __str__(self):
         return ("Rut: {} / {} / {} / {}". format(self.RUT, self.nombre, self.telefono, self.web))
 
@@ -39,8 +39,8 @@ class producto (models.Model):
     ID = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
     precio = models.IntegerField()
-    stock = modesl.IntegerField()
-    proveedor = models.ForeignKey('proveedor', on_delete = models.CASCADE, default = None)
+    stock = models.IntegerField()
+    provedor = models.ForeignKey('provedor', on_delete = models.CASCADE, default = None)
     categoria = models.ForeignKey('categoria', on_delete = models.CASCADE, default = None)
     venta = models.ForeignKey('venta', on_delete = models.CASCADE, default = None)
     def __str__(self):
@@ -52,7 +52,7 @@ class venta (models.Model):
     monto_final = models.IntegerField()
     descuento = models.BooleanField
     cantidad = models.IntegerField()
-    cliente = models.ForeignKey('cliente', on_delete = models.CASCADE, defautl=None)
+    cliente = models.ForeignKey('cliente', on_delete = models.CASCADE, default=None)
     def __str__(self):
         return ("ID: {}/ ${}/ cantidad:{}".format(self.ID,self.monto_final,self.cantidad))
     
